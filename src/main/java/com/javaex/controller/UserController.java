@@ -17,4 +17,11 @@ public class UserController {
 		return "user/joinForm";
 	}
 	
+	@RequestMapping(value="/user/loginform", method = {RequestMethod.GET, RequestMethod.POST})
+	public String loginForm() {
+		System.out.println("UserController.loginForm()");
+		
+		return "user/loginForm";
+	}
+	
 }
