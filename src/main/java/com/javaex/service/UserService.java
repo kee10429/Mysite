@@ -31,27 +31,43 @@ public class UserService {
 		return authUser;
 	}
 	
-	
-	//-- 회원수정폼
+	//--회원수정폼
 	public UserVO exeEditForm(int no) {
-		System.out.println("UserService.exeEditForm");
-		System.out.println(no);
+		System.out.println("UserService.exeEditForm()");
 		
-		UserVO userVO = userRepository.userSelectByNo(no);
+		UserVO userVO =userRepository.userSelectByNo(no);
 		
 		return userVO;
 	}
 	
-	// --회원정보수정
+	
+	//--회원정보수정
 	public int exeEdit(UserVO userVO) {
 		System.out.println("UserService.exeEdit()");
 		
 		int count = userRepository.userUpdate(userVO);
 		
-		return 0;
+		return count;
+		
 	}
 	
-	
-	
+
+	//--아이디사용유무체크(회원가입)
+	public boolean exeIdcheck(String id) {
+		System.out.println("UserService.exeIdcheck()");
+		
+		UserVO userVO = userRepository.userSelectById(id);
+		System.out.println("service");
+		System.out.println(userVO);
+		
+		if(userVO == null) {
+			//사용할 수 있는 아이디
+			return true;
+		} else {
+			//사용중인 아이디
+			return false;
+		}
+		
+	}
 	
 }
