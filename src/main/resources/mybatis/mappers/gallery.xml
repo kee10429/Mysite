@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="gallery">
+
+    <select id="selectAll" resultType="com.javaex.vo.GalleryVO">
+    <![CDATA[
+        SELECT 
+            g.no,
+            g.user_no AS userNo,
+            u.name,
+            g.content,
+            g.filePath,
+            g.orgName,
+            g.saveName,
+            g.fileSize
+        FROM gallery g
+        LEFT JOIN users u ON g.user_no = u.no
+        ORDER BY g.no DESC
+     ]]>
+    </select>
+    
+    <insert id="insertGallery" parameterType="com.javaex.vo.GalleryVO" useGeneratedKeys="true" keyProperty="no">
+	     <![CDATA[
+		    INSERT INTO gallery (user_no, content, filePath, orgName, saveName, fileSize)
+		    VALUES (#{userNo}, #{content}, #{filePath}, #{orgName}, #{saveName}, #{fileSize})
+	     ]]>
+	</insert>
+
+</mapper>

@@ -112,10 +112,15 @@
 		<!-- File Upload -->
 
 
-		
-		
 
-		
+
+
+
+		<dependency>
+			<groupId>com.javaex</groupId>
+			<artifactId>JavaExam07</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 	<build>
